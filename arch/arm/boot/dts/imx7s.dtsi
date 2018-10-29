@@ -47,7 +47,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include "imx7d-pinfunc.h"
 #include "imx7d-pinfunc-lpsr.h"
-#include "skeleton.dtsi"
 
 / {
 	aliases {
