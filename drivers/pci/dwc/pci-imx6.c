@@ -1302,7 +1302,8 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
 
 		/* pcie phy ref clock select; 1? internal pll : external osc */
 		regmap_update_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12,
-				   IMX7D_GPR12_PCIE_PHY_REFCLK_SEL, 0);
+				   IMX7D_GPR12_PCIE_PHY_REFCLK_SEL,
+				   IMX7D_GPR12_PCIE_PHY_REFCLK_SEL);
 	} else if (imx_pcie->variant == IMX6SX) {
 		/* Force PCIe PHY reset */
 		regmap_update_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR5,
@@ -1470,9 +1471,6 @@ static void pci_imx_clk_disable(struct device *dev)
 				IMX6Q_GPR1_PCIE_TEST_PD);
 		break;
 	case IMX7D:
-		/* turn off external osc input */
-		regmap_update_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12,
-				BIT(5), BIT(5));
 		break;
 	/*
 	 * Disable the over ride.
